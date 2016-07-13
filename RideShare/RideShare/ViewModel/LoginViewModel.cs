@@ -35,7 +35,7 @@ namespace RideShare.ViewModel
         public ICommand TapCommand { get; set; }
         public ICommand LoginCommand { get; set; }
         public ICommand RegisterCommand { get; set; }
-        //private INavigation navigation;
+        private INavigation _navigation;
 
         public string UserName
         {
@@ -59,8 +59,9 @@ namespace RideShare.ViewModel
         }     
 
         
-        public LoginViewModel()
+        public LoginViewModel(INavigation navigation)
         {
+            _navigation = navigation;
             _userType = Convert.ToString(UserTypeEnum.rider);
             RiderImageSource = ImageSource.FromResource("RideShare.Assets.login.userLogActive_icon.png");
             DriverImageSource = ImageSource.FromResource("RideShare.Assets.login.driverLog_icon.png");
@@ -104,7 +105,7 @@ namespace RideShare.ViewModel
         public async void UserRegister()
         {
             //NavigationPage NavigationPage = new NavigationPage(new Register());
-            await Navigation.PushAsync(new Register());
+            await _navigation.PushAsync(new Register());
         }
     }
 }

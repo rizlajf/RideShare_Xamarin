@@ -14,7 +14,7 @@ namespace RideShare.Views
         public Login()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            this.BindingContext = new LoginViewModel(this.Navigation);
         }
     }
 }
