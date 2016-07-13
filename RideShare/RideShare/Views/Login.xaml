@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RideShare;assembly=RideShare"
+             x:Class="RideShare.Views.Login">
+  <ContentPage.BackgroundColor>Gray</ContentPage.BackgroundColor>
+  
+  <StackLayout Orientation="Vertical">
+    <StackLayout HeightRequest="50" BackgroundColor="Black">
+      <Label  HorizontalOptions="Center" FontSize="16" >Login</Label>
+    </StackLayout>
+
+    <StackLayout Padding="5">
+      <Image HorizontalOptions="Center" Source="{local:ImageResource RideShare.Assets.login.login_logo.png}"> </Image>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="5">
+      <Image HorizontalOptions="Center" Source="{Binding RiderImageSource, Mode=TwoWay}">        
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Rider" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Label HorizontalOptions="Center" FontSize="16">OR</Label>
+      <Image HorizontalOptions="Center" Source="{Binding DriverImageSource, Mode=TwoWay}">        
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Driver" />
+        </Image.GestureRecognizers>
+      </Image>
+    </StackLayout>
+    <StackLayout Padding="10">
+      <Label Text="Username" />
+      <Entry x:Name="usernameEntry" Text="{Binding UserName}" Placeholder="username" />
+      <Label Text="Password" />
+      <Entry x:Name="passwordEntry" Text="{Binding Password}" IsPassword="true" />
+    </StackLayout>
+
+    <StackLayout>
+      <Button Text="Login" Command="{Binding LoginCommand}" />
+      <!--<Label x:Name="messageLabel" />-->
+    </StackLayout>
+
+    <StackLayout>
+      <Button Text="Register" Command="{Binding RegisterCommand}" />
+    </StackLayout>
+  </StackLayout>
+
+</ContentPage>
