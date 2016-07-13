@@ -105,7 +105,8 @@ namespace RideShare.ViewModel
         public async void UserRegister()
         {
             //NavigationPage NavigationPage = new NavigationPage(new Register());
-            await _navigation.PushAsync(new Register());
+            //await _navigation.PushAsync(new Register());
+            await _navigation.PushAsync(new Register(_userType));
         }
     }
 }

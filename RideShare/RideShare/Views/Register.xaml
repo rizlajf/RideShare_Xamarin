@@ -2,5 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RideShare.Views.Register">
+
+  <ContentPage.BackgroundColor>Gray</ContentPage.BackgroundColor>
+
+  <StackLayout Orientation="Vertical">
+    <StackLayout HeightRequest="50" BackgroundColor="Black">
+      <Label  HorizontalOptions="Center" FontSize="16" >Register</Label>
+    </StackLayout>
+
+    <StackLayout Padding="5">
+      <Image HorizontalOptions="Center" Source="{local:ImageResource RideShare.Assets.login.add_picture.png}"> </Image>
+    </StackLayout>
+    <StackLayout Padding="10">
+      <Label Text="First Name" />
+      <Entry x:Name="firstnameEntry" Text="{Binding FirstName}" Placeholder="firstname" />
+      <Label Text="Last Name" />
+      <Entry x:Name="lastnameEntry" Text="{Binding LastName}" Placeholder="lastname" />
+      <Label Text="User Name" />
+      <Entry x:Name="usernameEntry" Text="{Binding UserName}" Placeholder="username" />
+      <Label Text="Email" />
+      <Entry x:Name="emailEntry" Text="{Binding Email}" Placeholder="email" />
+      <Label Text="Password" />
+      <Entry x:Name="passwordEntry" Text="{Binding Password}" IsPassword="true" />
+    </StackLayout>
+
+    <StackLayout>
+      <Button Text="Create" Command="{Binding CreateCommand}" />
+      <!--<Label x:Name="messageLabel" />-->
+    </StackLayout>
+    
+  </StackLayout>
+  
   <Label Text="Success" VerticalOptions="Center" HorizontalOptions="Center" />
 </ContentPage>

@@ -40,6 +40,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -85,7 +86,7 @@
     <Content Include="Assets\navigation\logout.png" />
     <Content Include="Assets\navigation\navigation.png" />
     <Content Include="Assets\navigation\settings.png" />
-    <Content Include="Assets\register\add_picture.png" />
+    <EmbeddedResource Include="Assets\register\add_picture.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Login.xaml">
