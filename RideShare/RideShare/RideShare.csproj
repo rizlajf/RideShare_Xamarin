@@ -39,8 +39,10 @@
     <Compile Include="ImageResource.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceRequest.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\TestViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -48,8 +50,14 @@
     <Compile Include="Views\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TestView.xaml.cs">
+      <DependentUpon>TestView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="RideShareServiceClient">
+      <HintPath>..\..\RideShareServiceClient\bin\Debug\RideShareServiceClient.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.0.0.6482\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
@@ -78,7 +86,7 @@
     <Content Include="Assets\main\car.png" />
     <Content Include="Assets\main\googleStore_icon.png" />
     <Content Include="Assets\main\person.png" />
-    <Content Include="Assets\main\splash.png" />
+    <EmbeddedResource Include="Assets\main\splash.png" />
     <Content Include="Assets\navigation\about.png" />
     <Content Include="Assets\navigation\edit.png" />
     <Content Include="Assets\navigation\help.png" />
@@ -96,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Register.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TestView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

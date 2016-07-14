@@ -1,6 +1,7 @@
 ﻿using RideShare.Models;
 using RideShare.Views;
 using System;
+using RideShare;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,7 @@ namespace RideShare.ViewModel
         public ICommand TapCommand { get; set; }
         public ICommand LoginCommand { get; set; }
         public ICommand RegisterCommand { get; set; }
+        public ICommand OnLabelClickedCommand { get; set; }
         private INavigation _navigation;
 
         public string UserName
@@ -68,6 +70,7 @@ namespace RideShare.ViewModel
             TapCommand = new Command<string>(OnTapped);
             LoginCommand = new Command(UserLogin);
             RegisterCommand = new Command(UserRegister);
+            OnLabelClickedCommand = new Command(OnLabelClick);
 
         }
 
@@ -100,13 +103,34 @@ namespace RideShare.ViewModel
                 Password = this.Password,
                 UserType = this._userType
             };
+
+            test(user);
+            
         }
 
         public async void UserRegister()
         {
-            //NavigationPage NavigationPage = new NavigationPage(new Register());
-            //await _navigation.PushAsync(new Register());
             await _navigation.PushAsync(new Register(_userType));
         }
+
+        public void OnLabelClick()
+        {
+            
+        }
+
+        public async void test(User user)
+        {
+            //string msg = ServiceRequest.GetUsers();
+
+            //string msg = ServiceRequest.gettestResponse(user);
+
+            string msg = ServiceRequest.Login(user);
+
+            if (!String.IsNullOrEmpty(msg))
+            {
+                await _navigation.PushAsync(new TestView(msg));
+            }
+        }
+
     }
 }

@@ -7,7 +7,7 @@
   
   <StackLayout Orientation="Vertical">
     <StackLayout HeightRequest="50" BackgroundColor="Black">
-      <Label  HorizontalOptions="Center" FontSize="16" >Login</Label>
+      <Label  HorizontalOptions="Center" FontSize="16" FontAttributes="Bold">Login</Label>
     </StackLayout>
 
     <StackLayout Padding="5">
@@ -19,7 +19,7 @@
           <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Rider" />
         </Image.GestureRecognizers>
       </Image>
-      <Label HorizontalOptions="Center" FontSize="16">OR</Label>
+      <Label HorizontalOptions="Center" FontSize="16" FontAttributes="Bold">OR</Label>
       <Image HorizontalOptions="Center" Source="{Binding DriverImageSource, Mode=TwoWay}">        
         <Image.GestureRecognizers>
           <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Driver" />
@@ -38,6 +38,13 @@
       <!--<Label x:Name="messageLabel" />-->
     </StackLayout>
 
+    <StackLayout>
+      <Label Text="Forgot Password" FontSize="12" />
+      <Label.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding OnLabelClickedCommand}" />
+      </Label.GestureRecognizers>
+    </StackLayout>
+    
     <StackLayout>
       <Button Text="Register" Command="{Binding RegisterCommand}" />
     </StackLayout>

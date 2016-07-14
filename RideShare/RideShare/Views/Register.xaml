@@ -12,13 +12,16 @@
     </StackLayout>
 
     <StackLayout Padding="5">
-      <Image HorizontalOptions="Center" Source="{local:ImageResource RideShare.Assets.login.add_picture.png}"> </Image>
+      <Image HorizontalOptions="Center" Source="{local:ImageResource RideShare.Assets.register.add_picture.png}"> </Image>
+      <Label HorizontalOptions="Center" Text="Upload Picture" />
     </StackLayout>
     <StackLayout Padding="10">
-      <Label Text="First Name" />
-      <Entry x:Name="firstnameEntry" Text="{Binding FirstName}" Placeholder="firstname" />
-      <Label Text="Last Name" />
-      <Entry x:Name="lastnameEntry" Text="{Binding LastName}" Placeholder="lastname" />
+      <StackLayout Orientation="Horizontal">
+        <Label Text="First Name" />
+        <Entry x:Name="firstnameEntry" Text="{Binding FirstName}" Placeholder="firstname" />
+        <Label Text="Last Name" />
+        <Entry x:Name="lastnameEntry" Text="{Binding LastName}" Placeholder="lastname" />
+      </StackLayout>      
       <Label Text="User Name" />
       <Entry x:Name="usernameEntry" Text="{Binding UserName}" Placeholder="username" />
       <Label Text="Email" />
