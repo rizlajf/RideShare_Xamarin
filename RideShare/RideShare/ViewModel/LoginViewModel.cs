@@ -118,17 +118,31 @@ namespace RideShare.ViewModel
             
         }
 
+        public IList<User> userList { get; set; }
+
         public async void test(User user)
         {
-            //string msg = ServiceRequest.GetUsers();
+            List<dynamic> responses = ServiceRequest.GetUsers();
+           
+            foreach (dynamic response in responses)
+            {
+                User us = new User();
+                //us = response.users;
+                userList.Add(us);
+            }
 
+            var stringList = userList.OfType<string>();
+            string stringlist = stringList.ToString();
             //string msg = ServiceRequest.gettestResponse(user);
 
-            string msg = ServiceRequest.Login(user);
+            // string msg = ServiceRequest.Login(user);
 
-            if (!String.IsNullOrEmpty(msg))
+            //Response rs = ServiceRequest.Login(user);
+            //string msg = rs.Token;
+
+            if (!String.IsNullOrEmpty(stringlist))
             {
-                await _navigation.PushAsync(new TestView(msg));
+                await _navigation.PushAsync(new TestView(stringlist));
             }
         }
 

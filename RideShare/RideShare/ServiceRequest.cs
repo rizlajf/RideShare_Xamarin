@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using RideShareServiceClient;
 using RideShare.Models;
+using Newtonsoft.Json;
 
 namespace RideShare
 {
     public static class ServiceRequest
     {
-        private const string SERVER = "http://172.28.40.252:8089"; //http://localhost:8089/
+        private const string SERVER = "http://172.28.40.252:1337"; //http://localhost:8089/
         private const string LOGIN_USER_URL = SERVER + "/users/rider/auth";
         private const string REGISTER_USER_URL = SERVER + "/authapp/accesstoken";
         private const string USER_INFO_URL = SERVER + "/authapp/userinfo";
@@ -21,21 +22,24 @@ namespace RideShare
 
         private const string TEST_Fetch_userd_URL = SERVER + "/users/Riders";
 
-        public static string GetUsers()
+        public static List<dynamic> GetUsers()
         {
             ServiceClient sc = new ServiceClient();
             Uri uri = new Uri(TEST_Fetch_userd_URL);
-            Task<string> result = sc.SendRequest(uri);
-            return result.Result;
+            Task<string> result = sc.SendRequest(uri);            
+            var respList = JsonConvert.DeserializeObject<List<UserJson>>(result.Result);
+            return respList.ToList<dynamic>();
 
         }
 
-        public static string Login(User user)
+        public static Response Login(User user)
         {
             ServiceClient sc = new ServiceClient();
             Uri uri = new Uri(LOGIN_USER_URL);
             Task<string> result = sc.SendRequest(uri, user);
-            return result.Result;
+            //JSONObject myObject = new JSONObject(result);
+            Response res = JsonConvert.DeserializeObject<Response>(result.Result);
+            return res;
 
         }
 

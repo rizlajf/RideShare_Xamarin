@@ -31,7 +31,10 @@ namespace RideShareServiceClient
                 var response = client.SendAsync(request).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                   return response.Content.ReadAsStringAsync();
+                    //string res = response.Content.ReadAsStringAsync().Result;
+                    //object m = JsonConvert.DeserializeObject<object>(res);
+                    //return m;
+                    return response.Content.ReadAsStringAsync();
                     //return JsonConvert.DeserializeObject<TResult>(resultJson);
                 }
                 else
