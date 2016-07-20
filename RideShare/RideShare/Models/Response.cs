@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace RideShare.Models
 {
-    public class UserJson
-    {       
+    public class UserJson : JsonResponse
+    {
+        [JsonProperty("users")]
         public List<Response> users { get; set; }
+        
     }
 
     public class Response : JsonResponse

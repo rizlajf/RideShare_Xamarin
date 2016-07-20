@@ -33,8 +33,10 @@ namespace RideShareServiceClient
                 {
                     //string res = response.Content.ReadAsStringAsync().Result;
                     //object m = JsonConvert.DeserializeObject<object>(res);
-                    //return m;
+                    string test = response.Content.ReadAsStringAsync().Result;
                     return response.Content.ReadAsStringAsync();
+                    //var reslt = await response.Content.ReadAsStringAsync();
+                    //return reslt;
                     //return JsonConvert.DeserializeObject<TResult>(resultJson);
                 }
                 else
@@ -47,16 +49,41 @@ namespace RideShareServiceClient
                 throw ex;
             }
 
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    content = response.Content.ReadAsStringAsync();
-            //    return Task.Run(() = > JsonObject.Parse(content));
-            //}
-
         }
 
         // GET request
-        public Task<string> SendRequest(Uri uri)
+        //public Task<string> SendRequest(Uri uri)
+        //{
+
+        //    var client = new HttpClient();
+        //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+        //    var request = new HttpRequestMessage();
+        //    request.Method = HttpMethod.Get;
+        //    request.RequestUri = uri;
+
+        //    try
+        //    {
+        //        var response = client.SendAsync(request).Result;
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            return response.Content.ReadAsStringAsync();
+        //            //return JsonConvert.DeserializeObject<TResult>(resultJson);
+        //        }
+        //        else
+        //        {
+        //            throw new Exception("Not success");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+
+        //}
+
+        //GET test
+        public string SendRequest(Uri uri)
         {
 
             var client = new HttpClient();
@@ -71,7 +98,7 @@ namespace RideShareServiceClient
                 var response = client.SendAsync(request).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    return response.Content.ReadAsStringAsync();
+                    return response.Content.ReadAsStringAsync().Result;
                     //return JsonConvert.DeserializeObject<TResult>(resultJson);
                 }
                 else

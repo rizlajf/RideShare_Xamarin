@@ -11,7 +11,7 @@ namespace RideShare
 {
     public static class ServiceRequest
     {
-        private const string SERVER = "http://172.28.40.252:1337"; //http://localhost:8089/
+        private const string SERVER = "http://172.28.40.252:8089"; //http://localhost:8089/
         private const string LOGIN_USER_URL = SERVER + "/users/rider/auth";
         private const string REGISTER_USER_URL = SERVER + "/authapp/accesstoken";
         private const string USER_INFO_URL = SERVER + "/authapp/userinfo";
@@ -22,13 +22,13 @@ namespace RideShare
 
         private const string TEST_Fetch_userd_URL = SERVER + "/users/Riders";
 
-        public static List<dynamic> GetUsers()
+        public static UserJson GetUsers()
         {
             ServiceClient sc = new ServiceClient();
             Uri uri = new Uri(TEST_Fetch_userd_URL);
-            Task<string> result = sc.SendRequest(uri);            
-            var respList = JsonConvert.DeserializeObject<List<UserJson>>(result.Result);
-            return respList.ToList<dynamic>();
+            string result = sc.SendRequest(uri);
+            return JsonConvert.DeserializeObject<UserJson>(result.ToString());
+            //return respList;
 
         }
 
@@ -48,8 +48,8 @@ namespace RideShare
         {
             ServiceClient sc = new ServiceClient();
             Uri uri = new Uri(TEST_routerconfig_URL);
-            Task<string> result = sc.SendRequest(uri);
-            return result.Result;
+            string result = sc.SendRequest(uri);
+            return result;
 
         }
 
