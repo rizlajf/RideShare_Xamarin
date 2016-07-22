@@ -20,6 +20,7 @@ namespace RideShare.ViewModel
             rider
         }
 
+        public string token = string.Empty;
         /// <summary>
 		/// Expose the '' via a property so that Xaml can bind to it
 		/// </summary>
@@ -95,7 +96,7 @@ namespace RideShare.ViewModel
             NotifyPropertyChaged("DriverImageSource");
         }
 
-        public void UserLogin()
+        public async void UserLogin()
         {
             var user = new User()
             {
@@ -104,7 +105,16 @@ namespace RideShare.ViewModel
                 UserType = this._userType
             };
 
-            test(user);
+            Response rs = ServiceRequest.Login(user);
+            if (!String.IsNullOrEmpty(rs.message))
+            {
+                await _navigation.PushAsync(new TestView(rs.message));
+            }
+            else
+            {
+                token = rs.Token;
+                await _navigation.PushAsync(new TestView(rs.Token));
+            }
             
         }
 
@@ -145,12 +155,7 @@ namespace RideShare.ViewModel
             //    await _navigation.PushAsync(new TestView(msg));
             //}
 
-            //login
-            //Response rs = ServiceRequest.Login(user);
-            //if (!String.IsNullOrEmpty(rs.message))
-            //{
-            //    await _navigation.PushAsync(new TestView(rs.message));
-            //}
+            
 
         }
 

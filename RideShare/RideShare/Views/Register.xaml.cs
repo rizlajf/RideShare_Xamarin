@@ -14,13 +14,13 @@ namespace RideShare.Views
         public Register()
         {
             InitializeComponent();
-            this.BindingContext = new RegisterViewModel();
+            this.BindingContext = new RegisterViewModel(this.Navigation);
         }
 
         public Register(string userType)
         {
             InitializeComponent();
-            this.BindingContext = new RegisterViewModel(userType);
+            this.BindingContext = new RegisterViewModel(userType, this.Navigation);
         }
     }
 }

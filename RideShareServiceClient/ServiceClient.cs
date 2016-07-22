@@ -13,7 +13,7 @@ namespace RideShareServiceClient
     {
 
         //POST request
-        public Task<string> SendRequest(Uri uri, object item)
+        public string SendRequest(Uri uri, object item)
         {
 
             var client = new HttpClient();
@@ -23,8 +23,7 @@ namespace RideShareServiceClient
             request.Method = HttpMethod.Post;
             request.RequestUri = uri;
             var json = JsonConvert.SerializeObject(item);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            request.Content = content;
+            request.Content = new StringContent(json, Encoding.UTF8, "application/json");
             
             try
             {
@@ -34,7 +33,7 @@ namespace RideShareServiceClient
                     //string res = response.Content.ReadAsStringAsync().Result;
                     //object m = JsonConvert.DeserializeObject<object>(res);
                     string test = response.Content.ReadAsStringAsync().Result;
-                    return response.Content.ReadAsStringAsync();
+                    return response.Content.ReadAsStringAsync().Result;
                     //var reslt = await response.Content.ReadAsStringAsync();
                     //return reslt;
                     //return JsonConvert.DeserializeObject<TResult>(resultJson);

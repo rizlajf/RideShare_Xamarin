@@ -19,10 +19,10 @@ namespace RideShare.ViewModel
             }
         }
 
-        //public TestViewModel()
-        //{
+        public TestViewModel()
+        {
 
-        //}
+        }
 
         public TestViewModel(string mSg)
         {

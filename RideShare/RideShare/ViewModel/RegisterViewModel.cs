@@ -1,4 +1,5 @@
 ﻿using RideShare.Models;
+using RideShare.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace RideShare.ViewModel
         private string _userType;
 
         public ICommand CreateCommand { get; set; }
+        private INavigation _navigation;
 
         public string FirstName
         {
@@ -78,18 +80,20 @@ namespace RideShare.ViewModel
 
         }
 
-        public RegisterViewModel()
+        public RegisterViewModel(INavigation navigation)
         {
+            _navigation = navigation;
             CreateCommand = new Command(UserRegister);
         }
 
-        public RegisterViewModel(string info)
+        public RegisterViewModel(string info, INavigation navigation)
         {
+            _navigation = navigation;
             _userType = info;
             CreateCommand = new Command(UserRegister);
         }
 
-        public void UserRegister()
+        public async void UserRegister()
         {
             var user = new User()
             {
@@ -100,6 +104,16 @@ namespace RideShare.ViewModel
                 Password = this.Password,
                 UserType = this._userType
             };
+
+            Response rs = ServiceRequest.Register(user);
+            if (!String.IsNullOrEmpty(rs.message))
+            {
+                await _navigation.PushAsync(new TestView(rs.message));
+            }
+            else
+            {
+                await _navigation.PushAsync(new TestView(rs.Token));
+            }
         }
 
     }

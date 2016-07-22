@@ -11,11 +11,11 @@ namespace RideShare.Views
 {
     public partial class TestView : ContentPage
     {
-        //public TestView()
-        //{
-        //    InitializeComponent();
-        //    this.BindingContext = new TestViewModel(this.Navigation);
-        //}
+        public TestView()
+        {
+            InitializeComponent();
+            this.BindingContext = new TestViewModel();
+        }
 
         public TestView(string msg)
         {
